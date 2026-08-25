@@ -15,7 +15,7 @@ CREATE TABLE employees (
     emp_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE,
     salary DECIMAL(10,2),
-    degree VARCHAR(10),	
+    degree VARCHAR(15),	
     dept_id INT,
     manager_id INT,
     join_date DATE,
