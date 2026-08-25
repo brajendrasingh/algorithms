@@ -1,6 +1,8 @@
-Q1: How do you find duplicate records?
+Q1: How do you find duplicate records like name, salaries, degrees?
+Ans: SELECT degree, COUNT(*) AS count FROM employees GROUP BY degree HAVING COUNT(*) > 1;
 
 Q2: How do you find the second highest salary?
+Ans: SELECT DISTINCT salary AS SecondHighestSalary FROM employee ORDER BY salary DESC LIMIT 1 OFFSET 1;
 
 Q3: Find employees who earn more than their manager.
 
@@ -11,3 +13,6 @@ Q5: Find departments having more than 5 employees
 Q6: Find the highest-paid employee in each department
 
 Q7: Find employees earning more than the average salary of their department
+
+Q8: Find employees along with their manager name 
+Ans: SELECT e.*, d.* FROM departments d INNER JOIN employees e ON e.dept_id = d.dept_id;
