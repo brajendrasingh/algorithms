@@ -40,4 +40,6 @@ INSERT INTO employees VALUES
 (106, 'Kiran', 'kiran@company.com',  70000, 'M.Tech', 3, 107,  '2020-09-10'),
 (107, 'Manoj', 'manoj@company.com', 120000, 'MCA', 3, NULL, '2017-05-19'),
 (108, 'Ravi', 'ravi@company.com',   40000, 'B.Tech', 4, 109,  '2021-12-01'),
-(109, 'Anil', 'anil@company.com',   80000, 'MCA', 4, NULL, '2019-08-14');
+(109, 'Anil', 'anil@company.com',   80000, 'MCA', 4, NULL, '2019-08-14'),
+(110, 'Rahul', 'rahul@company.com',   48000, 'MBA', 4, NULL, '2002-08-22'),
+(111, 'Ankita', 'ankita@company.com',  55000, 'Polytechnic', 1, 110,  '2025-09-01');

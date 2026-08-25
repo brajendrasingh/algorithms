@@ -1,0 +1,13 @@
+Q1: How do you find duplicate records?
+
+Q2: How do you find the second highest salary?
+
+Q3: Find employees who earn more than their manager.
+
+Q4: Find the number of employees in each department
+
+Q5: Find departments having more than 5 employees
+
+Q6: Find the highest-paid employee in each department
+
+Q7: Find employees earning more than the average salary of their department
