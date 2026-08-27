@@ -115,7 +115,7 @@ public class TestCase {
 	}
 	private static Scanner s;
 	
-	public static void xxmain(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
 		s = new Scanner(System.in);
 		System.out.println("Enter no of testcase");

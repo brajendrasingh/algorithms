@@ -1,6 +1,6 @@
 -- Create database
-CREATE DATABASE employee_db;
-USE employee_db;
+CREATE DATABASE department_employees_db;
+USE department_employees_db;
 
 -- Department table
 CREATE TABLE departments (
