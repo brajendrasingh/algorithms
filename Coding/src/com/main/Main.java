@@ -12,6 +12,7 @@ import com.matrix.Matrix;
 import com.pattern.Pattern;
 import com.string.StringCode;
 import com.thread.Threads;
+import com.stream.JavaStream;
 
 /**
  * @author BRAJENDRA SINGH
@@ -19,7 +20,7 @@ import com.thread.Threads;
  */
 public class Main {
 	static Random r = new Random();
-
+	JavaStream javaStream = new JavaStream();
 	public static void bits() {
 		System.out
 				.println("********************************Bits************************************");
@@ -81,9 +82,9 @@ public class Main {
 		System.out.println("**********************String***************************");
 		StringCode s = new StringCode();
 		String[] names = new String[] { "Tree", "Apple", "Van", "Cat" };
-		/*		
+		/*
 		 * // System.out.println("Names are  " + Arrays.asList(names)); //
-		 * s.sortNames(names); 
+		 * s.sortNames(names);
 		 * System.out.println("Sorted Names are  " + Arrays.toString(names));
 		 */
 /*		String x=null;
@@ -129,7 +130,7 @@ public class Main {
 		/*
 		 * m.print(b); int c[][]=m.addMat(a, b); m.print(c);
 		 * c=m.subtractMat(a,b); m.print(c);
-		 * 
+		 *
 		 * if(m.areSameMatrix(a,b)) System.out.println("Both matrix are same");
 		 * else System.out.println("Matrix are Not Same");
 		 */
@@ -157,6 +158,7 @@ public class Main {
 		//int x = (Integer) null; //NullPointerException
 		A b=new A();
 		b.testFun();
+        javaStream.duplicate();
 		System.out.println("Test");
 	}
 }
