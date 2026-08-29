@@ -22,8 +22,29 @@ public class Employee {
         this.city = city;
     }
 
+    public int getEid() {
+        return eid;
+    }
+
+    public String getEName() {
+        return eName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
     @Override
     public String toString() {
-        return "Employee{name='" + eName + "', salary=" + salary + ", city='" + city + "'}";
+        return "Employee{" +
+                "Id=" + eid +
+                ", Name='" + eName + '\'' +
+                ", Salary=" + salary +
+                ", City='" + city + '\'' +
+                '}';
     }
 }

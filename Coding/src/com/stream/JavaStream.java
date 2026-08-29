@@ -37,10 +37,25 @@ public class JavaStream {
         sortedEmployees.forEach(System.out::println);
     }
 
-    public void frequency() {
+    public void numericFrequency() {
+        List<Integer> numbers = List.of(1, 2, 3, 2, 4, 5, 3, 6, 2);
+        Map<Integer, Long> frequencyMap = numbers.collect(Collectors.groupingBy(n -> n, Collectors.counting());
+        System.out.println(frequencyMap);
+    }
+
+    public void stringFrequency() {
         String[] words = {"apple", "banana", "apple", "cherry", "banana", "apple"};
         Map<String, Long> frequencyMap = Arrays.stream(words).collect(Collectors.groupingBy(word -> word, Collectors.counting()));
         System.out.println(frequencyMap);// Output: {banana=2, cherry=1, apple=3}
+    }
+
+    public void hrAndFinanceEmployees() {
+        List<Department> allDepartments = getSampleData();
+        List<Employee> hrAndFinanceEmployees = allDepartments.stream()
+                .filter(dept -> "HR".equalsIgnoreCase(dept.getDptName()) || "Finance".equalsIgnoreCase(dept.getDptName()))
+                .flatMap(dept -> dept.getEmployeeList().stream()).collect(Collectors.toList());
+        
+        hrAndFinanceEmployees.forEach(System.out.println);
     }
 
     public void hrDptEmpCount() {

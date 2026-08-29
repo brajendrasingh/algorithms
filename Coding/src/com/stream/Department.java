@@ -26,9 +26,25 @@ public class Department {
         this.employeeList.add(employee);
     }
 
+    public int getDid() {
+        return did;
+    }
+
+    public String getDptName() {
+        return dptName;
+    }
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
     @Override
     public String toString() {
-        return "Department: " + dptName + " | Employees: " + employeeList;
+        return "Department{" +
+                "Id=" + did +
+                ", Name='" + dptName + '\'' +
+                ", employeeList=" + employeeList +
+                '}';
     }
 
 }
