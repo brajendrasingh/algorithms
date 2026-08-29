@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
-
+    public int did;
     public String dptName;
     public List<Employee> employeeList = new ArrayList<>();
 
@@ -12,7 +12,13 @@ public class Department {
     }
 
     public Department(String name, List<Employee> employeeList) {
-        this.name = name;
+        this.dptName = name;
+        this.employeeList = employeeList;
+    }
+
+    public Department(int did, String name, List<Employee> employeeList) {
+        this.did = did;
+        this.dptName = name;
         this.employeeList = employeeList;
     }
 
@@ -22,7 +28,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department: " + name + " | Employees: " + employeeList;
+        return "Department: " + dptName + " | Employees: " + employeeList;
     }
 
 }

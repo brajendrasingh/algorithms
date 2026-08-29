@@ -1,5 +1,8 @@
 package com.stream;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class JavaStream {
 
     public void duplicate() {
@@ -10,7 +13,7 @@ public class JavaStream {
         System.out.println("Duplicate numbers: " + Arrays.toString(duplicates));// Output: [2, 3]
 
         // 2nd approach: groupingBy
-        int[] duplicates = Arrays.stream(numbers).boxed().collect(Collectors.groupingBy(num -> num, Collectors.counting()))
+        int[] duplicate = Arrays.stream(numbers).boxed().collect(Collectors.groupingBy(num -> num, Collectors.counting()))
                 .entrySet().stream().filter(entry -> entry.getValue() > 1).mapToInt(Map.Entry::getKey).toArray();
     }
 
@@ -23,15 +26,15 @@ public class JavaStream {
 
     public void sortingByNameAndCity() {
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Amit", "50000", "Delhi"));
-        employees.add(new Employee("Rahul", "60000", "Mumbai"));
-        employees.add(new Employee("Amit", "70000", "Bangalore"));
-        employees.add(new Employee("Neha", "55000", "Pune"));
+        employees.add(new Employee("Amit", 50000, "Delhi"));
+        employees.add(new Employee("Rahul", 60000, "Mumbai"));
+        employees.add(new Employee("Amit", 70000, "Bangalore"));
+        employees.add(new Employee("Neha", 55000, "Pune"));
 
         List<Employee> sortedEmployees = employees.stream()
                 // 1. Sort by name, then tie-break by city
                 .sorted(Comparator.comparing((Employee e) -> e.eName).thenComparing(e -> e.city)).collect(Collectors.toList());
-        sortedEmployees.forEach(System.out.println);
+        sortedEmployees.forEach(System.out::println);
     }
 
     public void frequency() {
@@ -49,21 +52,21 @@ public class JavaStream {
         System.out.println("Total HR Employees: " + hrEmployeeCount);
     }
 
-    public void getSampleData() {
+    public List<Department> getSampleData() {
         // IT Department Employees
-        Employee emp1 = new Employee("Amit", "85000", "Bangalore");
-        Employee emp2 = new Employee("Rahul", "95000", "Mumbai");
-        Employee emp3 = new Employee("Neha", "78000", "Pune");
+        Employee emp1 = new Employee("Amit", 85000, "Bangalore");
+        Employee emp2 = new Employee("Rahul", 95000, "Mumbai");
+        Employee emp3 = new Employee("Neha", 78000, "Pune");
         List<Employee> itEmployees = new ArrayList<>(Arrays.asList(emp1, emp2, emp3));
 
         // HR Department Employees
-        Employee emp4 = new Employee("Priya", "60000", "Delhi");
-        Employee emp5 = new Employee("Amit", "65000", "Bangalore"); // Same name as emp1, different dept/city
+        Employee emp4 = new Employee("Priya", 60000, "Delhi");
+        Employee emp5 = new Employee("Amit", 65000, "Bangalore"); // Same name as emp1, different dept/city
         List<Employee> hrEmployees = new ArrayList<>(Arrays.asList(emp4, emp5));
 
         // Sales Department Employees
-        Employee emp6 = new Employee("Vikram", "55000", "Chennai");
-        Employee emp7 = new Employee("Sneha", "55000", "Mumbai");
+        Employee emp6 = new Employee("Vikram", 55000, "Chennai");
+        Employee emp7 = new Employee("Sneha", 55000, "Mumbai");
         List<Employee> salesEmployees = new ArrayList<>(Arrays.asList(emp6, emp7));
 
         // 2. Create the Department objects and assign the employee lists
@@ -89,5 +92,6 @@ public class JavaStream {
                 System.out.println("  -> " + emp.eName + " | Salary: ₹" + emp.salary + " | City: " + emp.city);
             }
         }
+        return allDepartments;
     }
 }
