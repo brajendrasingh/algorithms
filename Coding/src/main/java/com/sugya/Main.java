@@ -1,5 +1,6 @@
 package com.sugya;
 
+import com.sugya.stream.JavaNumericStream;
 import com.sugya.stream.JavaObjectStream;
 import com.sugya.stream.JavaStringStream;
 

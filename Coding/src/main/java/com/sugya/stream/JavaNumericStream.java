@@ -5,6 +5,24 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class JavaNumericStream {
+    public void evenNumber() {
+        //.filter(n -> n%2 == 0)
+    }
+
+    public void maxElement() {
+        List<Integer> list = Arrays.asList(10, 15, 8, 49, 25, 98, 98, 32, 15);
+        int max = list.stream().max(Integer::compare).get();
+        System.out.println(max);
+
+        System.out.println(Arrays.stream(new int[]{1, 2, 3, 2, 4, 5, 3, 6, 2}).max().getAsInt());
+    }
+
+    public void numberStartingWithOne() {
+        List<Integer> myList = Arrays.asList(10, 15, 8, 49, 25, 98, 32);
+        myList.stream().map(s -> s + "").filter(s -> s.startsWith("1")).forEach(System.out::println);
+        //For counting element
+        long count = myList.stream().count();
+    }
 
     public void printSequence() {
         IntStream.rangeClosed(0, 9).forEach(System.out::println);
