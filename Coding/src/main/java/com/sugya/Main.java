@@ -1,17 +1,27 @@
 package com.sugya;
 
+import com.sugya.stream.JavaObjectStream;
+import com.sugya.stream.JavaStringStream;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static Random r = new Random();
+
+    public static void main(String[] args) {
+        System.out.println("---------------------------------------------------");
+        //int x = (Integer) null; //NullPointerException
+//        new JavaNumericStream().updateArray();
+//        new JavaStringStream().capitalizeFirstLetter();
+        new JavaObjectStream().sortingByNameAndCity();
+        System.out.println("---------------------------------------------------");
+    }
 
     public static void bits() {
         System.out.println("********************************Bits************************************");
         com.sugya.bitmagic.Bitmagic bit = new com.sugya.bitmagic.Bitmagic();
+        Random r = new Random();
         int a = r.nextInt(30);
         int b = r.nextInt(10);
 
@@ -33,8 +43,8 @@ public class Main {
     }
 
     public static void array() {
-        System.out
-                .println("*********************************Arrays***********************************");
+        System.out.println("*********************************Arrays***********************************");
+        Random r = new Random();
         int x = r.nextInt(30);
         int y = r.nextInt(10);
 
@@ -135,17 +145,4 @@ public class Main {
         t.run();
     }
 
-    public static void main(String[] args) {
-        // bits();
-        // array();
-        // pattern();
-        // string();
-        // matrix();
-        // thread();
-        //int x = (Integer) null; //NullPointerException
-        com.sugya.oops.A b = new com.sugya.oops.A();
-        b.testFun();
-        new com.sugya.stream.JavaStream().duplicate();
-        System.out.println("Test");
-    }
 }

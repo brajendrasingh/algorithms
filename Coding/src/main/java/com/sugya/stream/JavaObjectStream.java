@@ -1,28 +1,12 @@
 package com.sugya.stream;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class JavaStream {
-
-    public void duplicate() {
-        // 1st approach: by set
-        int[] numbers = {1, 2, 3, 2, 4, 5, 3, 6, 2};
-        Set<Integer> seen = new HashSet<>();
-        int[] duplicates = Arrays.stream(numbers).filter(num -> !seen.add(num)).distinct().toArray();
-        System.out.println("Duplicate numbers: " + Arrays.toString(duplicates));// Output: [2, 3]
-
-        // 2nd approach: groupingBy
-        int[] duplicate = Arrays.stream(numbers).boxed().collect(Collectors.groupingBy(num -> num, Collectors.counting()))
-                .entrySet().stream().filter(entry -> entry.getValue() > 1).mapToInt(Map.Entry::getKey).toArray();
-    }
-
-    public void sorting() {
-        String[] words = {"cherry", "banana", "apple", "date"};
-        String[] sortedWords = Arrays.stream(words).sorted((s1, s2) -> Character.compare(s1.charAt(0), s2.charAt(0)))
-                .toArray(String[]::new);
-        System.out.println(Arrays.toString(sortedWords)); // Output: [apple, banana, cherry, date]
-    }
+public class JavaObjectStream {
 
     public void sortingByNameAndCity() {
         List<Employee> employees = new ArrayList<>();
@@ -35,18 +19,6 @@ public class JavaStream {
                 // 1. Sort by name, then tie-break by city
                 .sorted(Comparator.comparing((Employee e) -> e.eName).thenComparing(e -> e.city)).collect(Collectors.toList());
         sortedEmployees.forEach(System.out::println);
-    }
-
-    public void numericFrequency() {
-        List<Integer> numbers = List.of(1, 2, 3, 2, 4, 5, 3, 6, 2);
-        Map<Integer, Long> frequencyMap = numbers.stream().collect(Collectors.groupingBy(n -> n, Collectors.counting()));
-        System.out.println(frequencyMap);
-    }
-
-    public void stringFrequency() {
-        String[] words = {"apple", "banana", "apple", "cherry", "banana", "apple"};
-        Map<String, Long> frequencyMap = Arrays.stream(words).collect(Collectors.groupingBy(word -> word, Collectors.counting()));
-        System.out.println(frequencyMap);// Output: {banana=2, cherry=1, apple=3}
     }
 
     public void hrAndFinanceEmployees() {
