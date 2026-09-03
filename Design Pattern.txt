@@ -1,0 +1,17 @@
+Q1: How to break singleton pattern in java?
+Ans: Reflection(Throw a RuntimeException inside the private constructor if an instance already exists),
+ Serialization and Deserialization(Implement the readResolve() method), Object Cloning(Override the clone() method and explicitly throw a CloneNotSupportedException), Multithreading(Use a Double-Checked Locking), Multiple ClassLoaders
+The Ultimate Fix: The Enum Singleton 
+
+Q2: What is Backend for Frontend(BFF) design pattern?
+Ans: Build a separate, dedicated backend service for each distinct type of UI like web app, mobile app, smart TV.
+Advantages: Fewer Network Requests,
+
+Q3: 
+Ans:
+
+Q4:
+Ans
+
+Q5:
+Ans:

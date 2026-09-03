@@ -1,13 +1,5 @@
-Q1: Where is used @Order In Spring Boot?
-Ans: To control the execution/priority order. commonly used with filters. @Order(1) highest priority.
-Request
-   ↓
-AuthFilter
-   ↓
-LoggingFilter
-   ↓
-Controller
+Q1: MSA design pattern?
+Ans: eureka, Circuit breaker, api gateway, cqrs, CAP, 12 principal
 
-Q2: Where is used @ConditionalOn?
-Ans: Spring will normally create all bean every time the application starts. But you don't want it when It isn't being used.
-@Conditional allows Spring to register a bean or configuration only when a specified condition is satisfied.
+Q2: Distributed transaction?
+Ans: Saga

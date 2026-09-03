@@ -1,0 +1,5 @@
+Q1: What docker
+Ans: 
+
+Q2: What is kubernetes?
+Ans:

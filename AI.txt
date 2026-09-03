@@ -1,13 +1,14 @@
-Q1: Where is used @Order In Spring Boot?
-Ans: To control the execution/priority order. commonly used with filters. @Order(1) highest priority.
-Request
-   ↓
-AuthFilter
-   ↓
-LoggingFilter
-   ↓
-Controller
+Q1: AI terminology?
+Ans: Gen AI(ChatGPT), Agentic AI(GitHub Copilot agent mode), Prompt, Token, LLM, knowledge cutoff dates 
 
-Q2: Where is used @ConditionalOn?
-Ans: Spring will normally create all bean every time the application starts. But you don't want it when It isn't being used.
-@Conditional allows Spring to register a bean or configuration only when a specified condition is satisfied.
+Q2: How you are using AI in development?
+Ans: Coding assistance, RAG, MCP servers
+
+Q3: What is MCP server? 
+Ans: Introduced by Anthropic. A connector between an AI and external data sources, files, or tool like Jira, sharepoint/wiki. There are lot of open-source MCP servers. MCP is an open-source standard so No AI Lock-in like only chatgpt or any other. 
+
+Q4: How you implement RAG?
+Ans: Embedding models(Free, Commercial), Vector database(Milvus, Qdrant, PG), similarity search, LLM chat model
+
+Q5:
+Ans:
