@@ -1,9 +1,6 @@
 package com.sugya.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class JavaObjectStream {
@@ -17,7 +14,7 @@ public class JavaObjectStream {
 
         List<Employee> sortedEmployees = employees.stream()
                 // 1. Sort by name, then tie-break by city
-                .sorted(Comparator.comparing((Employee e) -> e.eName).thenComparing(e -> e.city)).collect(Collectors.toList());
+                .sorted(Comparator.comparing((Employee e) -> e.name).thenComparing(e -> e.city)).collect(Collectors.toList());
         sortedEmployees.forEach(System.out::println);
     }
 
@@ -28,6 +25,80 @@ public class JavaObjectStream {
                 .flatMap(dept -> dept.getEmployeeList().stream()).collect(Collectors.toList());
 
         hrAndFinanceEmployees.forEach(System.out::println);
+    }
+
+    public void averageSalaryPerDepartment() {
+        List<Employee> list = List.of(new Employee("Amit", 85000, "Bangalore", "IT"),
+                new Employee("Rahul", 95000, "Mumbai", "IT"),
+                new Employee("Neha", 78000, "Pune", "HR"),
+                new Employee("Priya", 60000, "Delhi", "HR"),
+                new Employee("Amit", 65000, "Bangalore", "Sales"),
+                new Employee("Sneha", 55000, "Mumbai", "Sales"),
+                new Employee("Vikram", 55000, "Chennai", "Finance"));
+        //IT=90k, HR=69k, Sales=60k, finance=55k
+        Map<String, Double> m = list.stream().collect(Collectors.groupingBy(e -> e.getDpt(),
+                Collectors.averagingDouble(e -> e.getSalary())));
+
+        m.forEach((k, v) -> System.out.println(k + " -> " + v));
+    }
+
+    public void highestPaidEmployeePerDepartment() {
+        List<Employee> list = List.of(new Employee("Amit", 85000, "Bangalore", "IT"),
+                new Employee("Rahul", 95000, "Mumbai", "IT"),
+                new Employee("Neha", 78000, "Pune", "HR"),
+                new Employee("Priya", 60000, "Delhi", "HR"),
+                new Employee("Amit", 65000, "Bangalore", "Sales"),
+                new Employee("Sneha", 55000, "Mumbai", "Sales"),
+                new Employee("Vikram", 55000, "Chennai", "Finance"));
+        //IT=95k, HR=78k, Sales=65k, finance=55k
+        Map<String, Optional<Employee>> m = list.stream().collect(Collectors.groupingBy(e -> e.getDpt(),
+                Collectors.maxBy(Comparator.comparing(e -> e.getSalary()))));
+
+        m.forEach((k, v) -> System.out.println(k + " -> " + v.get().getSalary()));
+    }
+
+    public void lowestPaidEmployeePerDepartment() {
+        List<Employee> list = List.of(new Employee("Amit", 85000, "Bangalore", "IT"),
+                new Employee("Rahul", 95000, "Mumbai", "IT"),
+                new Employee("Neha", 78000, "Pune", "HR"),
+                new Employee("Priya", 60000, "Delhi", "HR"),
+                new Employee("Amit", 65000, "Bangalore", "Sales"),
+                new Employee("Sneha", 55000, "Mumbai", "Sales"),
+                new Employee("Vikram", 35000, "Chennai", "Finance"));
+        //IT=85k, HR=60k, Sales=55k, finance=35k
+        Map<String, Optional<Employee>> m = list.stream().collect(Collectors.groupingBy(e -> e.getDpt(),
+                Collectors.minBy(Comparator.comparing(e -> e.getSalary()))));
+
+        m.forEach((k, v) -> System.out.println(k + " -> " + v.get().getSalary()));
+    }
+
+    public void employeeCountPerDepartment() {
+        List<Employee> list = List.of(new Employee("Amit", 85000, "Bangalore", "IT"),
+                new Employee("Rahul", 95000, "Mumbai", "IT"),
+                new Employee("Neha", 78000, "Pune", "HR"),
+                new Employee("Priya", 60000, "Delhi", "HR"),
+                new Employee("Amit", 65000, "Bangalore", "HR"),
+                new Employee("Sneha", 55000, "Mumbai", "Sales"),
+                new Employee("Vikram", 55000, "Chennai", "Finance"));
+        //IT=2, HR=3, Sales=1, finance=1
+        Map<String, Long> m = list.stream().collect(Collectors.groupingBy(e -> e.getDpt(), Collectors.counting()));
+        System.out.println(m);
+    }
+
+    public void highestPaidEmployeesPerDepartment() {
+        List<Department> dptList = getSampleData();
+        //IT=95k, HR=65k, Sales=55k
+        Map<String, Optional<Employee>> m = dptList.stream().collect(Collectors.toMap(d -> d.getDptName(),
+                d -> d.getEmployeeList().stream().max(Comparator.comparing(e -> e.getSalary()))));
+        m.forEach((k, v) -> System.out.println(k + " -> " + v.get().getSalary()));
+        System.out.println("---------------------------------------------------------------");
+        //if we have duplicate dpt like below: //IT=95k, HR=65k, Sales=85k
+        dptList.add(new Department("Sales", List.of(new Employee("Neha", 85000, "Kanpur"))));
+
+        Map<String, Optional<Employee>> map = dptList.stream().collect(Collectors.groupingBy(d -> d.getDptName(),
+        Collectors.flatMapping(d -> d.employeeList.stream(), Collectors.maxBy(Comparator.comparingDouble(e -> e.salary)))));
+
+        map.forEach((k, v) -> System.out.println(k + " -> " + v.get().getSalary()));
     }
 
     public void hrDptEmpCount() {
@@ -73,12 +144,12 @@ public class JavaObjectStream {
         List<Department> allDepartments = new ArrayList<>(Arrays.asList(itDept, hrDept, salesDept));
 
         // --- Verify data layout by printing ---
-        for (Department dept : allDepartments) {
-            System.out.println("Department: " + dept.dptName + " | Total Staff: " + dept.employeeList.size());
-            for (Employee emp : dept.employeeList) {
-                System.out.println("  -> " + emp.eName + " | Salary: ₹" + emp.salary + " | City: " + emp.city);
-            }
-        }
+//        for (Department dept : allDepartments) {
+//            System.out.println("Department: " + dept.dptName + " | Total Staff: " + dept.employeeList.size());
+//            for (Employee emp : dept.employeeList) {
+//                System.out.println("  -> " + emp.name + " | Salary: ₹" + emp.salary + " | City: " + emp.city);
+//            }
+//        }
         return allDepartments;
     }
 }
