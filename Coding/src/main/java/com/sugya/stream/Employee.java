@@ -1,11 +1,14 @@
 package com.sugya.stream;
 
+import java.util.List;
+
 public class Employee {
     public int id;
     public String name;
     public double salary;
     public String city;
     public String dpt;
+    public List<String> skills;
 
     public Employee() {
     }
@@ -30,6 +33,11 @@ public class Employee {
         this.city = city;
     }
 
+    public Employee(String name, List<String> skills) {
+        this.name = name;
+        this.skills = skills;
+    }
+
     public int getId() {
         return id;
     }
@@ -52,6 +60,14 @@ public class Employee {
 
     public void setDpt(String dpt) {
         this.dpt = dpt;
+    }
+
+    public List<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
     }
 
     @Override

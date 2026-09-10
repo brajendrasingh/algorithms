@@ -27,6 +27,21 @@ public class JavaObjectStream {
         hrAndFinanceEmployees.forEach(System.out::println);
     }
 
+    public void employeeCountPerSkill() {
+        List<Employee> list = List.of(new Employee("Amit", List.of("Java", "JS", "SQL", "MSA")),
+                new Employee("Rahul",  List.of("Java", "JS", "SQL", "MSA")),
+                new Employee("Neha",  List.of("Java", "JS", "SQL", "MSA")),
+                new Employee("Priya",  List.of("Java", "Angular", "SQL", "MSA")),
+                new Employee("Amit",  List.of("Java", "React", "SQL", "MSA")),
+                new Employee("Sneha",  List.of("Java", ".Net", "Spring", "REST")),
+                new Employee("Vikram",  List.of("Java", "Node", "Spring", "REST")));
+        //Java=7, SQL=5, JS=3, MSA=5
+        Map<String, Long> m = list.stream().flatMap(e -> e.getSkills().stream())
+                .collect(Collectors.groupingBy(skill -> skill, Collectors.counting()));
+
+        m.forEach((k, v) -> System.out.println(k + " -> " + v));
+    }
+
     public void averageSalaryPerDepartment() {
         List<Employee> list = List.of(new Employee("Amit", 85000, "Bangalore", "IT"),
                 new Employee("Rahul", 95000, "Mumbai", "IT"),
