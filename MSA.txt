@@ -3,3 +3,30 @@ Ans: eureka, Circuit breaker, api gateway, cqrs, CAP, 12 principal
 
 Q2: Distributed transaction?
 Ans: Saga
+
+Q3: Why we use API Gateway?
+Ans: Like Spring Cloud Gateway, Kong. It mainly handles cross-cutting concerns.
+     1) Single entry point
+     2) Routing
+     3) Authentication and authorization: token validation
+     4) Rate limiting: 100 req/sec
+     5) SSL/TLS termination: configuring HTTPS certificates
+     6) Request/response transformation
+
+Q4: What is API Gateway vs Reverse Proxy?
+Ans: API gateway is a specialized type of reverse proxy with extra capabilities.
+
+Q5: Can API Gateway call multiple microservices?
+Ans: Yes, Gateway can aggregate responses. if aggregation becomes complex, Use a BFF (Backend for Frontend).
+
+Q6: How do you make API Gateway highly available?
+Ans: Don't run only one Gateway instance. AWS Route 53(multi region) => ALB(single region) =>Gateway instances => microservices
+
+Q7: How to send spring boot app log to cloudwatch?
+Ans: Configure the ECS task definition with the awslogs log driver: it uses default console logs.Those logs go to stdout and ECS sends them to CloudWatch.
+Application running directly on EC2: EC2 → log file(/var/log/application.log) → CloudWatch Agent → CloudWatch
+
+Q8: How to connect to s3 in boot application?
+Ans: AWS SDK for Java, AWS access key and secret key(used while we set up aws cli), DefaultCredentialsProvider(<user>\.aws\credentials)
+Local development: Configure AWS credentials using the AWS CLI:aws configure ==>C:\Users\<your-user>\.aws\credentials
+Production: Attach IAM role(Temporary AWS credentials) to the ECS task

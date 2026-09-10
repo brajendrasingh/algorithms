@@ -3,3 +3,48 @@ Ans:
 
 Q2: What is kubernetes?
 Ans:
+
+Q3: Single/Multi region deployment
+Ans: INTERNET => DNS(Route 53) => Firewall(WAF) =>CDN(CloudFront) =>(1) Angular(s3) (2)Gateway -> ALB -> Microservices
+     UI: Route 53 → CloudFront → S3
+     Backend: Route 53 → WAF → ALB → Spring Cloud Gateway → MSAs
+
+Q4: public and private subnet?
+Ans:Public: ALB
+Private: Gateway → Microservices → Database/Kafka/Redis
+
+private ECS services may still need Internet access—for downloading something/deps so they use NAT Gateway
+
+Q5: What is VPC?
+Ans: Isolated private network and ip range inside this we can divide in subnets like private, public.
+     For making public attach Internet Gateway & Update Route Table.
+
+Q6: Why aws vpn use?
+Ans: For connecting private subnet resources like db etc. from laptop. Without VPN whitelist your laptop's public IP in the RDS Security Group.
+
+Q7: Route 53?
+Ans: 53 is a port. Working: User =>  Google Public DNS(8.8.8.8) => Route 53 
+
+Q8: ALB vs Elastic Load Balancing(ELB)?
+Ans:ELB is a service that can have multiple type of load balancer. ALB is a one type of it.
+
+Q9: CDN(CloudFront) cache management?
+Ans: after deploying new version invalidate current cache. index.html→ short cache / revalidate frequently
+*.js, *.css, images → long cache
+
+Q10: In AWS Account IAM users or roles vs Cognito
+Ans:IAM → Who can access/manage AWS resources?
+    Cognito → Who can log in to my application? like any hosted website/portal
+
+Identity Provider: Cognito, Keycloak, Okta
+
+Q11: Cloudwatch?
+Ans:Default retention: Never Expire
+Log Group = collection of logs
+Log Stream = stream/source of logs
+Log Event = individual log entry
+Alarm = monitors a metric and triggers an action
+Logs Insights = queries CloudWatch logs
+
+1 Task with 2 containers → potentially 2 log streams
+1 Service with 10 tasks → potentially 10 log streams per container
