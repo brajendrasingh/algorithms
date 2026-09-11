@@ -40,11 +40,25 @@ Identity Provider: Cognito, Keycloak, Okta
 
 Q11: Cloudwatch?
 Ans:Default retention: Never Expire
-Log Group = collection of logs
-Log Stream = stream/source of logs
-Log Event = individual log entry
-Alarm = monitors a metric and triggers an action
-Logs Insights = queries CloudWatch logs
+  Log Group = collection of logs
+  Log Stream = stream/source of logs
+  Log Event = individual log entry
+  Alarm = monitors a metric and triggers an action
+  Logs Insights = queries CloudWatch logs
 
-1 Task with 2 containers → potentially 2 log streams
-1 Service with 10 tasks → potentially 10 log streams per container
+  1 Task with 2 containers → potentially 2 log streams
+  1 Service with 10 tasks → potentially 10 log streams per container
+
+Q12: What is serverless?
+Ans: In this we don't manage infra. There are lot of services those are provided as serverless like lambda, Fargate, S3, DynamoDB
+
+Q13: Inter container communication in ECS?
+Ans: If in same task definition then localhost:8080
+     if in separate task/services definition then use AWS cloud map or ALB or service connect(service-name).
+
+Q14: Lambda vs Fargate?
+Ans: Lambda is Event driven and trigger based, used for short lived task. We upload code zip file.
+     Fargate is used for long running task and is triggered/managed by ECS. ECS add it as a service(long running) or Task(run to completion jobs).
+
+Q15: How to run a cron job in aws?
+Ans: Scheduler(EventBridge/AWS Batch) that fires at a specific time, compute target(Lambda/Fargate) that executes code.
