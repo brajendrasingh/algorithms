@@ -30,3 +30,15 @@ Q8: How to connect to s3 in boot application?
 Ans: AWS SDK for Java, AWS access key and secret key(used while we set up aws cli), DefaultCredentialsProvider(<user>\.aws\credentials)
 Local development: Configure AWS credentials using the AWS CLI:aws configure ==>C:\Users\<your-user>\.aws\credentials
 Production: Attach IAM role(Temporary AWS credentials) to the ECS task
+
+Q9: Config server? Alternative AWS Secret manager
+Ans: Spring Cloud Config Server or Consul, Config Client, version control using Git
+
+Q10: Circuit breaker? like Resilience4j or Hystrix
+Ans: To stopping cascading failures when services becomes slow or stops working
+     We return fallback method response and support retry as well.
+
+Q11: Service Discovery and Service Registry(centralized DB) in Microservices:
+Ans: It is 2 types
+   (1)Client-Side Service Discovery: Netflix Eureka, Consul
+   (2)Server-Side Service Discovery: NGINX, AWS ELB
