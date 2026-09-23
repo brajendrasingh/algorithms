@@ -1,5 +1,8 @@
-Q1: MSA design pattern?
-Ans: eureka, Circuit breaker, api gateway, cqrs, CAP, 12 principal
+Q0: MSA design pattern?
+Ans: Eureka, Circuit breaker, api gateway, CQRS, CAP, 12 Principal
+
+Q1: Service registry/discovery system?
+Ans: Eureka(Alternatives:AWS Cloud Map/Service Connect, Consul, K8S DNS). Eureka mostly is used in VM-based deployment. Eureka is primarily a service registry/discovery system. If we have multiple instance of service then returns a list of ip array.
 
 Q2: Distributed transaction?
 Ans: Saga
@@ -42,3 +45,9 @@ Q11: Service Discovery and Service Registry(centralized DB) in Microservices:
 Ans: It is 2 types
    (1)Client-Side Service Discovery: Netflix Eureka, Consul
    (2)Server-Side Service Discovery: NGINX, AWS ELB
+
+Q12: Distributed transaction Operation possibilities i.e resources involved
+Ans: Database, Async api call(External API), Broker, Filesystem, Cache
+1)DB & DB = Saga (2)DB & broker = Transactional Outbox (3) DB & Async api call (4)DB & Filesystem (5)DB + Cache(No need of transaction) (6)Broker + Broker (7)API + API
+
+Outbox: Outbox Event, Outbox table, outbox processor, marks message as processed or delete

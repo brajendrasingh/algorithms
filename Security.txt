@@ -1,0 +1,41 @@
+Q0: Types of Token
+Ans: JWT, Opaque, 
+
+Q1: What is JWT(JSON Web Token)?
+Ans: JWT is composed of 3 parts separated by dots (.): Header, Payload, and Signature. JWT use Base64URL encoding. JWT Header & Payload are encoded but Signature are both signed and encoded.
+Note: Signature is created from the encoded header + encoded payload, then the resulting signature is Base64URL-encoded
+
+Q2: Why we use Authorization: Bearer <JWT>
+Ans: OAuth 2.0 defines the Bearer Token usage for HTTP authorization
+
+Q3: Do we use JWT in both Authentication & Authorization
+Ans: Login(username/password or clientId/Secrect) → authenticate user → issue JWT
+     Authentication: is established by validating the JWT and identifying the subject.
+     Authorization: JWT contains claims such as roles or permissions, scopes
+
+Q4: Standard JWT claims those are mandatory?
+Ans: There are no mandatory claims in the JWT. Header(alg, typ, kid), Payload(iss, sub, aud, exp, iat, jti, roles, scope, custom claims), Signature
+
+Q5: What is OAuth 2.0
+Ans: OAuth2 is an authorization framework. Allows client application to access protected resources on behalf of a user or itself, without sharing the user's credentials with the client. Main components are Resource Owner(user), Client, Authorization Server, and Resource Server.
+Ex: Login to LinkedIn with Google =>Resource Owner(Me), Client(LinkedIn), Authorization Server(Google), & Resource Server(Google APIs)
+
+Q6: Authorization Server & Identity Provider?
+Ans: Keycloak, Auth0, Okta, AWS Cognito(for end-users), AWS IAM Identity Center(employee & developer access), Azure AD
+
+Q7: Spring Security
+Ans: Security Filter Chain=>Extract & Validate JWT => Authentication => Authorization
+
+HTTP Request -> DelegatingFilterProxy -> Spring Security FilterChain -> BearerTokenAuthenticationFilter -> JWT Authentication Provider -> JWT Decoder -> Validate signature + claims -> Authentication created -> SecurityContext -> Authorization filters/interceptors -> Controller
+
+HTTP Request -> Spring Security FilterChain -> Authentication Provider -> UserDetailsService  -> UserDB =>if success: SecurityContext -> SecurityContextHolder  -> Authorization
+
+Q8:
+Ans:
+
+Q9:
+Ans:
+
+Q10:
+Ans:
+
