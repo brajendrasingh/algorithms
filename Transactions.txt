@@ -1,0 +1,35 @@
+Q0: @Transactional annotation's parameters?
+Ans: propagation, isolation, readOnly(optimizes performance), timeout, and rollbackFor
+
+Q1: @Transactional annotation's Propagation?
+Ans: Used for defining transaction boundary behavior when a transactional method is called inside another. Default is Propagation.REQUIRED others are
+SUPPORTS, NOT_SUPPORTED, MANDATORY, NEVER, NESTED.
+
+Q2: @Transactional annotation's Isolation?
+Ans: It defines how safely and independently concurrent operations interact with a database. Default is Isolation.DEFAULT=db's default isolation.
+Other options: READ_UNCOMMITTED, READ_COMMITTED, REPEATABLE_READ, SERIALIZABLE
+
+Q3:
+Ans:
+
+Q4:
+Ans:
+
+Q5:
+Ans:
+
+Q6:
+Ans:
+
+Q7:
+Ans:
+
+Q8:
+Ans:
+
+Q9:
+Ans:
+
+Q10:
+Ans:
+
