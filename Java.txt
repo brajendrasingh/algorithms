@@ -1,0 +1,15 @@
+Q1: Java threads are dependent on OS If something critical goes wrong at the OS level, it will immediately impact your Java threads.So what to do for this in java.
+Ans: Use Virtual Threads (Java 21)
+
+Q2: LTS versions
+Ans: Java 8, Java 11, Java 17, Java 21, Java 25
+
+Q3: Java 17 features
+Ans: Sealed Classes, Records, Pattern Matching for instanceof & switch, Text Blocks(multi-line strings)
+Some Performance and Security improvement, obsolete feature Removals.
+
+Q4: Java 21 features
+Ans: Virtual Threads, Sequenced Collections, Record Patterns
+
+Q5:
+Ans:
