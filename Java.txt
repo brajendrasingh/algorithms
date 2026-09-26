@@ -11,5 +11,10 @@ Some Performance and Security improvement, obsolete feature Removals.
 Q4: Java 21 features
 Ans: Virtual Threads, Sequenced Collections, Record Patterns
 
-Q5:
-Ans:
+Q5: ExecutorService(interface) vs ForkJoinPool(Class implementing ExecutorService)
+Ans:ExecutorService:(1)One shared queue for all threads(2)Algorithm:FIFO/LIFO task pulling from central queue(3)ParallelStream/Sort, Virtual thread
+ForkJoinPool: (1)One queue per worker thread (2)Algorithm:Work-stealing:
+
+Q6: Future(Java 5) vs CompletableFuture(Java 8)
+Ans:Future: Blocking
+CompletableFuture: Non-blocking, Chaining, Combining, exceptionally 

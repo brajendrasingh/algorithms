@@ -39,3 +39,28 @@ Ans:
 Q10:
 Ans:
 
+
+------------------------------------------------------------
+1. Explain the Spring Security Filter Chain
+2. What is SecurityFilterChain?
+3. How do you configure Spring Security in Spring Boot 3?
+4. UserDetails vs UserDetailsService
+5. How does PasswordEncoder work?
+6. Why is BCrypt used for password hashing?
+7. How does JWT authentication work?
+8.  Access Token vs Refresh Token
+9.  How do you secure REST APIs?
+10. What is CSRF?
+11. What is CORS?
+12. hasRole() vs hasAuthority()
+13. What is method-level security?
+14. How does @PreAuthorize work?
+15. What are Authentication and SecurityContext?
+16. How does session management work?
+17. OAuth2 vs OpenID Connect
+18. How would you secure a microservices architecture using JWT/OAuth2?
+
+Additional topics to prepare:
+* Custom authentication
+* JWT filters
+* Spring Security 6 changes

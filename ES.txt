@@ -1,0 +1,85 @@
+Q1: Elasticsearch(9.5.4) terminology?
+Ans: Elasticsearch is a distributed search and analytics engine built on Apache Lucene. Cluster->Nodes->Index
+Index, Index Alias, document(_id,_source), Field, Mapping(Fields+Data Types), Analyzer(Character/Token Filter, Tokenizer), Inverted Index, Query(Match,Term,Bool,Range)
+
+Q2: Relational Database vs. Elasticsearch Mapping
+Ans:Database/Table=Index, Row=Document, Column=Field, Schema=Mapping
+
+Q3: Relational Database & Elasticsearch underlying data structure?
+Ans: Elasticsearch(Inverted Index), RDBMS(B+ tree)
+
+Q4: Types of index in es?
+Ans:Regular index, Data stream(time-series data), Searchable Snapshot (Frozen Index), Hidden index, Index alias
+
+Q5: Required things for index creation?
+Ans: Nothing is mandatory except index name. Important:number_of_shards, number_of_replicas, mappings(can cause performance issues if missed)
+
+Q6: stop-word filter(comes under token filters) with an analyzer
+Ans: the, is, on, the
+
+Input Text -> Tokenizer -> Token Filters(Lowercase,stop-word) -> Final Tokens
+
+Q7: Relevance scoring in Elasticsearch: _score
+Ans: BM25 as the default similarity algorithm. BM25 considers factors like: Term frequency, Inverse document frequency, Field length
+
+Q8: Query format
+Ans:
+{
+  "query": {
+    "match": {
+      "title": {
+        "query": "kids shoes",
+        "operator": "and",
+        "minimum_should_match": "75%"
+      }
+    }
+  }
+}
+
+Q9: Response format
+Ans:
+{
+  "hits": {
+    "hits": [
+      {
+        "_score": 2.81,
+        "_source": {
+          "title": "Kids shoes"
+        }
+      },
+      {
+        "_score": 1.42,
+        "_source": {
+          "title": "Shoes for kids"
+        }
+      }
+    ]
+  }
+}
+
+Q10: Elasticsearch Deployment, distribution & scaling 
+Ans: Cluster, Node(servers), Shards, replicas 
+
+Q11: What are primary shards and replica shards?
+Ans: Shards are two types: primaries and replicas. Sharding is the process of dividing large dataset into smaller more manageable parts called shards.
+No. of primary shards in an index is fixed at time of index creation , but No. of replica shards can be changed at any time.
+
+When we index a document, Elasticsearch determines which shard to store it in based on a sharding algorithm which is typically using the document's ID or routing value
+shard_num = hash(_routing/_id) % num_primary_shards
+
+Q12:Elasticsearch endpoints? GET, POST, PUT, DELETE
+Ans: POST /{index}/_doc/{id:optional}   =>POST /{index}/_update/{id}
+GET /{index}/_doc/{id}
+DELETE /{index}/_doc/{id}
+GET /{index}/_search   => GET /_search == search in all index
+GET /_cat/indices?v
+GET /{index}/_mapping  Or  GET /{index}/_settings
+
+Q13: What is _bulk API(for mass imports) and _reindex?
+Ans:_reindex API (Internal Data Copying):copy documents from one index to another
+
+Q14: Pagination — from/size vs search_after
+Ans:
+
+Q15: Elasticsearch security
+Ans: enable in this file: elasticsearch.yml
