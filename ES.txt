@@ -3,10 +3,10 @@ Ans: Elasticsearch is a distributed search and analytics engine built on Apache 
 Index, Index Alias, document(_id,_source), Field, Mapping(Fields+Data Types), Analyzer(Character/Token Filter, Tokenizer), Inverted Index, Query(Match,Term,Bool,Range)
 
 Q2: Relational Database vs. Elasticsearch Mapping
-Ans:Database/Table=Index, Row=Document, Column=Field, Schema=Mapping
+Ans:Database/Table=Index, Row=Document, Column=Field, Schema=Mapping, Primary Key=_id
 
 Q3: Relational Database & Elasticsearch underlying data structure?
-Ans: Elasticsearch(Inverted Index), RDBMS(B+ tree)
+Ans: Elasticsearch(Inverted Index), RDBMS(B-tree, B+ tree)
 
 Q4: Types of index in es?
 Ans:Regular index, Data stream(time-series data), Searchable Snapshot (Frozen Index), Hidden index, Index alias
@@ -39,21 +39,26 @@ Ans:
 Q9: Response format
 Ans:
 {
-  "hits": {
-    "hits": [
-      {
-        "_score": 2.81,
-        "_source": {
-          "title": "Kids shoes"
+  "took": 5,
+  "_shards": {    
+  },
+  {
+    "hits": {
+      "hits": [
+        {
+          "_score": 2.81,
+          "_source": {
+            "title": "Kids shoes"
+          }
+        },
+        {
+          "_score": 1.42,
+          "_source": {
+            "title": "Shoes for kids"
+          }
         }
-      },
-      {
-        "_score": 1.42,
-        "_source": {
-          "title": "Shoes for kids"
-        }
-      }
-    ]
+      ]
+    }
   }
 }
 
@@ -79,7 +84,26 @@ Q13: What is _bulk API(for mass imports) and _reindex?
 Ans:_reindex API (Internal Data Copying):copy documents from one index to another
 
 Q14: Pagination — from/size vs search_after
-Ans:
+Ans: size, from, max_result_window: 10,000 Document Cap, search_after
 
 Q15: Elasticsearch security
 Ans: enable in this file: elasticsearch.yml
+
+Q16: Searching: exact match vs full text search?
+Ans:match: full text search, other overloaded option like for word sequence:match_phrase
+term or terms: exact match
+range: Date, Numeric
+
+Q17: How to sort data in response?
+Ans: By default sorts results by their relevance score(_score). Dates, Numbers, Keywords, Booleans: No configuration needed.
+Text/Sentences, Arrays,Nested Structures requires configuration.
+
+Q18: Aggregations(grouping), and scripting.
+Ans: like count of each product sale
+
+Q19: Internal working of storing data?
+Ans: When a document is indexed, Elasticsearch sends it to Lucene. Lucene creates an inverted index.
+Our created index: it contais 2 parts:(1)inverted index  (2)_source=original JSON document
+
+Q20:
+Ans:
