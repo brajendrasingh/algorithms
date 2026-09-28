@@ -103,7 +103,7 @@ Ans: like count of each product sale
 
 Q19: Internal working of storing data?
 Ans: When a document is indexed, Elasticsearch sends it to Lucene. Lucene creates an inverted index.
-Our created index: it contais 2 parts:(1)inverted index  (2)_source=original JSON document
+Our created index: it contains 2 parts:(1)inverted index  (2)_source=original JSON document
 
 Q20:
 Ans:

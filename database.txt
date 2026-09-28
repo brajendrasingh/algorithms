@@ -1,0 +1,12 @@
+Q1: Sharding in RDBMS & NoSQL?
+Ans: Sharding means breaking a large db into smaller pieces called shards(multiple servers).
+
+RDBMS sharding: in this it is less common & complex. So in sql database sharding is done manully by db Admins using the partition keys. Ex:Customer table data can be partitioned by customerId like server1=IDs 1-10k, server2=IDs 10001-20k.
+
+NoSQL sharding: in this it is built-in & automatic. It can be done based on IDs, Geo-location, and it is automatic in nosql.
+
+Q2: What to do when database grow very fast
+Ans:Data Archiving, Table Partitioning(by date/region), Horizontal Sharding(Write traffic is very high), Read replicas(Read traffic is high), Indexing
+
+Q3: How database replication works and how many replicas we should create
+Ans: Separating write traffic from read traffic. Divide db into Primary & Replicas. Primary handles writes, Replicas handles read. Replica can be promoted if the primary fails. 
