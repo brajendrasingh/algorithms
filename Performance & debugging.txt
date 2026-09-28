@@ -1,0 +1,16 @@
+Q1: Memory leak, memory snapshot(heap dump), object allocation?
+Ans:Configure JVM Flags: java -Xms512m -Xmx2g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/path/to/dumps/heap.hprof -jar app.jar
+How to open & analyze the Heap Dump file *.hprof: use visualization tool like VisualVM etc.
+
+Q2: Profiling tools
+Ans: JDK built-in: Java Flight Recorder(JFR),JConsole
+Free: VisualVM, Eclipse MAT, IntelliJ IDEA Profiler
+
+Q3: How to analyse sql query performance: performance analysis
+Ans: Inspect the database's Execution Plan 
+MySQL, PostgreSQL: EXPLAIN ANALYZE SELECT * FROM users WHERE status = 'active';
+Oracle(Check temporary table: PLAN_TABLE): EXPLAIN PLAN FOR SELECT employee_id, last_name, department_name FROM employees;
+
+Q4: EXPLAIN ANALYZE vs EXPLAIN
+Ans:EXPLAIN: Does not run the query
+EXPLAIN ANALYZE: Runs the query entirely
