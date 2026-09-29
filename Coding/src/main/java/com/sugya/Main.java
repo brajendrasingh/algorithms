@@ -1,5 +1,6 @@
 package com.sugya;
 
+import com.sugya.spg.SPG;
 import com.sugya.stream.JavaNumericStream;
 import com.sugya.stream.JavaObjectStream;
 import com.sugya.stream.JavaStringStream;
@@ -16,6 +17,7 @@ public class Main {
 //        new JavaNumericStream().updateArray();
 //        new JavaStringStream().capitalizeFirstLetter();
         new JavaObjectStream().sortingByNameAndCity();
+        new SPG().topKFrequentWords();
         System.out.println("---------------------------------------------------");
     }
 

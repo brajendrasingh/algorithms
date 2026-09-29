@@ -14,3 +14,13 @@ Oracle(Check temporary table: PLAN_TABLE): EXPLAIN PLAN FOR SELECT employee_id, 
 Q4: EXPLAIN ANALYZE vs EXPLAIN
 Ans:EXPLAIN: Does not run the query
 EXPLAIN ANALYZE: Runs the query entirely
+
+Q5: Core dumps vs Heap dump?
+Ans: Core dumps: JVM crashes snapshot
+Heap dump: When java app run out of memory(outOfMemoryError) or has a memory leak
+
+Q6: Java profiling?
+Ans: Process of monitoring and analyzing a Java application's behavior at runtime inside JVM. Helps in pinpointing performance bottlenecks, memory leaks, and threading issues.
+CPU Profiling:
+Memory Profiling: 
+Thread Profiling:

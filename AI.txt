@@ -10,5 +10,8 @@ Ans: Introduced by Anthropic. A connector between an AI and external data source
 Q4: How you implement RAG?
 Ans: Embedding models(Free, Commercial), Vector database(Milvus, Qdrant, PG), similarity search, LLM chat model
 
-Q5:
-Ans:
+Q5: What is Tool calling(also known as function calling)
+Ans: A method by which LLM models can reliably connect and interact with external tools or APIs.
+
+Q6: Coding AI models?
+Ans: Claude(Haiku, Sonet, Opus, Fable)
