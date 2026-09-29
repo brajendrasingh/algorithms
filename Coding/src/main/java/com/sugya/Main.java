@@ -5,9 +5,7 @@ import com.sugya.stream.JavaNumericStream;
 import com.sugya.stream.JavaObjectStream;
 import com.sugya.stream.JavaStringStream;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -17,7 +15,7 @@ public class Main {
 //        new JavaNumericStream().updateArray();
 //        new JavaStringStream().capitalizeFirstLetter();
         new JavaObjectStream().sortingByNameAndCity();
-        new SPG().topKFrequentWords();
+        new SPG().romanToInteger("LVIII");//LVIII=58, MCMXCIV=1994
         System.out.println("---------------------------------------------------");
     }
 

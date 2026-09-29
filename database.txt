@@ -10,3 +10,9 @@ Ans:Data Archiving, Table Partitioning(by date/region), Horizontal Sharding(Writ
 
 Q3: How database replication works and how many replicas we should create
 Ans: Separating write traffic from read traffic. Divide db into Primary & Replicas. Primary handles writes, Replicas handles read. Replica can be promoted if the primary fails. 
+
+Q4: AWR report in oracle db?
+Ans: It is used by db administrators. AWR report shows data captured between two points in time(or snapshots).AWR report is a comparison report of two snapshots taken at different timestamps to know about db performance.
+
+Q5:
+Ans:

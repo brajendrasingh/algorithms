@@ -31,4 +31,43 @@ public class SPG {
         // 3. Print top K
         System.out.println(wordsList.subList(0, Math.min(k, wordsList.size())));
     }
+
+    public void romanToInteger(String s) {
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int total = 0;
+        int length = s.length();
+        for (int i = 0; i < length; i++) {
+            int currentVal = romanMap.get(s.charAt(i));
+            // If the current value is less than the next value, subtract it
+            if (i < length - 1 && currentVal < romanMap.get(s.charAt(i + 1))) {
+                total -= currentVal;
+            } else {
+                total += currentVal;
+            }
+        }
+        System.out.println(total);
+    }
+
+    public void integerToRoman(int num) {
+        // Values sorted in descending order
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] symbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        StringBuilder roman = new StringBuilder();
+        for (int i = 0; i < values.length; i++) {
+            // Replicating the symbol as long as num is greater than or equal to the current value
+            while (num >= values[i]) {
+                roman.append(symbols[i]);
+                num -= values[i];
+            }
+        }
+        System.out.println(roman.toString());
+    }
 }
