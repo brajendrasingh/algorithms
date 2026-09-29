@@ -70,4 +70,79 @@ public class SPG {
         }
         System.out.println(roman.toString());
     }
+
+    //Input: arr[] = [2, -3, 4, 1, 1, 7]  Output: 3
+    public int firstPositiveMissingNumber(int[] arr) {
+        int n = arr.length;
+        boolean[] vis = new boolean[n];//space: O(n), Time: O(n)
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > 0 && arr[i] <= n)
+                vis[arr[i] - 1] = true;
+        }
+        for (int i = 1; i <= n; i++) {
+            if (!vis[i - 1]) {
+                return i;
+            }
+        }
+        // if all elements from 1 to n are visited, then n+1 will be first positive missing number
+        return n + 1;
+    }
+
+    public boolean twoSum(int[] arr, int target) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            int complement = target - arr[i];
+            if (set.contains(complement)) {
+                return true;
+            }
+            set.add(arr[i]);
+        }
+        return false;
+    }
+
+    public int longestSubArrayWhoseSumIsX(int[] arr, int sum) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int res = 0;
+        int prefSum = 0;
+        for (int i = 0; i < arr.length; ++i) {
+            prefSum += arr[i];
+            if (prefSum == sum)
+                res = i + 1;
+                // If prefixSum - k exists in the map then there exist such // subarray from (index of previous prefix + 1) to i.
+            else if (map.containsKey(prefSum - sum))
+                res = Math.max(res, i - map.get(prefSum - sum));
+            if (!map.containsKey(prefSum))
+                map.put(prefSum, i);
+        }
+        return res;
+    }
+
+    //In this there are 2 possibilities 1 is exactly length maxLen or subarray can be <=maxLen, below code is for exact length
+    public int maxSumInSubArrayOfMaxLenN(int[] arr, int maxLen) {
+        int windowSum = 0;
+        for (int i = 0; i < maxLen; i++) {
+            windowSum += arr[i];
+        }
+        int maxSum = windowSum;
+        for (int i = maxLen; i < arr.length; i++) {
+            windowSum += arr[i] - arr[i - maxLen];
+            maxSum = Math.max(maxSum, windowSum);
+        }
+        return maxSum;
+    }
+
+    //In this there are 2 possibilities 1 is exactly length maxLen or subarray can be <=maxLen, below code is for non-exact length
+    public int maxSumInSubArrayOfMaxLenK(int[] arr, int maxLen) {
+        int maxSum = Integer.MIN_VALUE;
+        int windowSum = 0;
+        // Window of size <= n
+        for (int i = 0; i < arr.length; i++) {
+            windowSum += arr[i];
+            if (i >= maxLen) { // Keep window length <= n
+                windowSum -= arr[i - maxLen];
+            }
+            maxSum = Math.max(maxSum, windowSum);
+        }
+        return maxSum;
+    }
 }

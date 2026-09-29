@@ -14,5 +14,5 @@ Ans: Separating write traffic from read traffic. Divide db into Primary & Replic
 Q4: AWR report in oracle db?
 Ans: It is used by db administrators. AWR report shows data captured between two points in time(or snapshots).AWR report is a comparison report of two snapshots taken at different timestamps to know about db performance.
 
-Q5:
-Ans:
+Q5: Database locking
+Ans: Database Level, Table Level, Page-Level, Row Level
