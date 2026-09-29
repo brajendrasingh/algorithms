@@ -20,7 +20,7 @@ Ans: Core dumps: JVM crashes snapshot
 Heap dump: When java app run out of memory(outOfMemoryError) or has a memory leak
 
 Q6: Java profiling?
-Ans: Process of monitoring and analyzing a Java application's behavior at runtime inside JVM. Helps in pinpointing performance bottlenecks, memory leaks, and threading issues.
+Ans: Process of monitoring and analyzing a Java application's behavior at runtime inside JVM. Helps in pinpointing performance bottlenecks, memory leaks, & threading issues like deadlocks.
 CPU Profiling:
 Memory Profiling: 
 Thread Profiling:

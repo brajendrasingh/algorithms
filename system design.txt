@@ -1,0 +1,2 @@
+Q1: How to implement your own cache with auto cleanup?
+Ans: ConcurrentHashMap for thread safety, Store values with expiry time, Use ScheduledExecutorService for removing expired entries.
