@@ -1,0 +1,17 @@
+Q1: SQL Injection (SQLi)
+Ans:  proper sanitization,
+
+Q2: Cross-Site Scripting (XSS)
+Ans:  proper sanitization,
+
+Q3: Null Pointer Dereferences
+Ans: 
+
+Q4: Hardcoded Credentials
+Ans: remove creds, key, password
+
+Q5: Log Forging
+Ans: 
+
+Q6: Sensitive Data Exposure (Information Leakage).
+Ans: mask info in logs

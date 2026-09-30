@@ -6,12 +6,33 @@ Ans: Coding assistance, RAG, MCP servers
 
 Q3: What is MCP server? 
 Ans: Introduced by Anthropic. A connector between an AI and external data sources, files, or tool like Jira, sharepoint/wiki. There are lot of open-source MCP servers. MCP is an open-source standard so No AI Lock-in like only chatgpt or any other. 
+Github copilot intelliJ: MCP only used in Agent Mode,
+Click on :Configure Tools->Add More Toold->mcp.json->start mcp server
+{
+  "servers": {
+    "atlassian-jira": {
+      "url": "https://atlassian.com"
+    }
+  }
+}
 
 Q4: How you implement RAG?
-Ans: Embedding models(Free, Commercial), Vector database(Milvus, Qdrant, PG), similarity search, LLM chat model
+Ans: Embedding models(Free, Commercial), Vector database(Milvus, Qdrant, PG, Oracle Db 23ai), similarity search, LLM chat model
 
 Q5: What is Tool calling(also known as function calling)
 Ans: A method by which LLM models can reliably connect and interact with external tools or APIs.
 
-Q6: Coding AI models?
-Ans: Claude(Haiku, Sonet, Opus, Fable)
+Q6: Coding AI models in GitHub copilot?
+Ans: (1) Anthropic's Claude(Haiku(2Lac tokens)->Sonet->Opus->Fable) is a best for Large code context currently it is a no. 1 tool for coding.
+     (2) DeepSeek R1:
+     (3) GPT-5.6:
+	 (4) Gemini:
+
+Q7: Prompt format?
+Ans: Role, CONTEXT(java,framework,buildTool,db), Task, CONSTRAINTS(backward compatibility, do not add new Deps), REQUIREMENTS(JUnit, Follow SOLID), Output(Explain the design, Explain how to test locally)
+
+Q8: How to create AI agent?
+Ans: Create proper prompt, put it in .github/agents/junit-test-generator.agent.md, then include in copilot context
+
+Q9:
+Ans:
